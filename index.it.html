@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>costycnc · Boboaca Costel · Assembly AVR · CNC a filo caldo</title>
+<meta name="description" content="costycnc: due mondi, niente confusione. Didattica: assembly AVR da zero. Produzione: CNC a filo caldo, solo 3 strumenti. Garage Edition.">
+<meta name="author" content="Boboaca Costel">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://costycnc.github.io/index.html">
+<link rel="alternate" hreflang="en" href="https://costycnc.github.io/index.html">
+<link rel="alternate" hreflang="it" href="https://costycnc.github.io/index.it.html">
+<link rel="alternate" hreflang="x-default" href="https://costycnc.github.io/index.html">
+
+<meta property="og:title" content="costycnc — due mondi, niente confusione">
+<meta property="og:description" content="Didattica: assembly AVR. Produzione: CNC a filo caldo. Solo 3 strumenti.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://costycnc.github.io/index.it.html">
+<meta property="profile:username" content="costycnc">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://costycnc.github.io/#person",
+  "name": "Boboaca Costel",
+  "alternateName": "costycnc",
+  "description": "Faccio due cose diverse. Didattica: insegno assembly AVR da zero. Produzione: vendo una CNC a filo caldo. Per la CNC servono solo 3 strumenti. Il resto (didattica) puoi ignorarlo.",
+  "url": "https://costycnc.github.io/",
+  "email": "costycnc@costycnc.it",
+  "sameAs": [
+    "https://github.com/costycnc",
+    "https://costycnc.it/",
+    "https://costycnc.it/avr1",
+    "https://costycnc.it/cm8",
+    "https://www.amazon.it/dp/B0CNRR6MJ1",
+    "https://www.amazon.fr/dp/B0CNRR6MJ1"
+  ],
+  "knowsAbout": ["Assembly AVR", "ATmega328", "CNC a filo caldo", "GCode", "Plugin Inkscape"],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "CostyCNC a filo caldo",
+        "description": "Tagliapolistirolo a filo caldo. Area 150x40cm. Garage Edition. Per questa macchina servono solo 3 strumenti.",
+        "url": "https://www.amazon.it/dp/B0CNRR6MJ1"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "CreativeWork",
+        "name": "AVR1",
+        "description": "Laboratorio AVR assembly per principianti assoluti. Nessuna installazione. LED acceso in 10 secondi.",
+        "url": "https://costycnc.it/avr1"
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#fafaf7;color:#1a1a1a;font-family:'Courier New',monospace;line-height:1.5;padding:2rem 1rem}
+  .container{max-width:1000px;margin:0 auto}
+  .lang{text-align:right;margin-bottom:1rem;font-size:0.85rem}
+  .lang a{color:#1a1a1a;text-decoration:underline}
+  .header{border-bottom:2px solid #1a1a1a;padding-bottom:1.5rem;margin-bottom:2rem}
+  .name{font-size:2rem;font-weight:700;letter-spacing:-1px}
+  .sub{font-size:0.9rem;color:#333;margin-top:0.5rem}
+  .section{margin:2.5rem 0}
+  .section-title{font-size:1.3rem;font-weight:700;margin-bottom:1rem;border-left:4px solid #1a1a1a;padding-left:0.75rem}
+  .card{background:#fff;border:1px solid #ccc;padding:1.25rem;margin:1rem 0}
+  .card p{margin-bottom:0.75rem}
+  .card a{color:#1a1a1a}
+  .badge{background:#eaeae5;font-size:0.7rem;padding:0.2rem 0.5rem;margin-right:0.5rem;display:inline-block}
+  hr{margin:2rem 0}
+  .footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #ccc;font-size:0.8rem}
+  @media(max-width:650px){body{padding:1rem}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang"><a href="index.html">🇬🇧 EN</a> | 🇮🇹 IT</div>
+
+  <div class="header">
+    <div class="name">costycnc</div>
+    <div class="sub">ecco cosa faccio · e cosa ti serve (se hai la mia macchina)</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">⎯ due mondi, niente confusione</div>
+    <p>Faccio due cose diverse. La maggior parte della roba che vedi in giro (GitHub, blog, estensioni) è <strong>didattica</strong>: serve a chi vuole imparare l'assembly AVR da zero.</p>
+    <p style="margin-top:0.5rem">Poi c'è la <strong>macchina CNC a filo caldo</strong> che vendo su Amazon. Per farla funzionare servono solo <strong>3 strumenti</strong>. Il resto (didattica) puoi ignorarlo.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📖 1 · didattica <span style="font-weight:normal">per chi vuole imparare l'assembly AVR</span></div>
+    
+    <div class="card">
+      <strong>⚡ AVR1 — laboratorio per principianti assoluti</strong>
+      <p>Nessuna installazione. Solo un cavo USB. Insegno come funziona un microcontrollore (ATmega328) attraverso la metafora dei "cassetti e interruttori". LED acceso in 10 secondi.</p>
+      <p><span class="badge">👉</span> <a href="https://costycnc.it/avr1">costycnc.it/avr1</a></p>
+    </div>
+
+    <div class="card">
+      <strong>🔧 Plugin Inkscape (versione didattica)</strong>
+      <p>Esempi e tutorial su come scrivere estensioni Python per Inkscape. <strong>Non serve per la macchina CNC</strong> (per quella uso una versione specifica).</p>
+      <p><span class="badge">📦</span> <a href="https://github.com/costycnc">GitHub · costycnc</a></p>
+    </div>
+
+    <div class="card">
+      <strong>📝 Blog · frammenti di codice</strong>
+      <p>Appunti sparsi su AVR, gcode, estensioni. Roba didattica, non aggiornata, ma ci sono per chi vuole scavare.</p>
+      <p><span class="badge">📖</span> <a href="https://costycnc1.blogspot.com">costycnc1.blogspot.com</a></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🛠️ 2 · produzione <span style="font-weight:normal">per chi ha la mia CNC a filo caldo (o vuole capirla)</span></div>
+    
+    <p><strong>Se hai comprato la mia macchina su Amazon, questi sono gli unici 3 strumenti che ti servono.</strong> Il resto (didattica) lascialo perdere.</p>
+
+    <div class="card">
+      <strong>📐 Plugin Inkscape · costycnc (versione CNC)</strong>
+      <p>Converte l'immagine vettoriale in GCode per il taglio a filo caldo. Si installa nella cartella estensioni di Inkscape.</p>
+      <p><span class="badge">⬇️</span> <a href="https://github.com/costycnc">Scarica da GitHub</a></p>
+    </div>
+
+    <div class="card">
+      <strong>💻 costycnc.it/cm8 · GCode generator + USB sender</strong>
+      <p>Fa due cose insieme: trasforma l'immagine in GCode <strong>E</strong> lo invia direttamente alla macchina via USB. <strong>Non serve UGS. Non serve salvare file.</strong> Colleghi l'USB, carichi immagine o incolli GCode, premi "Invia".</p>
+      <p><span class="badge">🚀</span> <a href="https://costycnc.it/cm8">costycnc.it/cm8</a></p>
+    </div>
+
+    <div class="card">
+      <strong>⚙️ Firmware per scheda MKS-DLC32 (ESP32)</strong>
+      <p>Versione derivata da cm8. La scheda che uso nelle mie macchine. Se hai la mia CNC, è già preinstallato. Se vuoi modificarlo o capirlo, è su GitHub.</p>
+      <p><span class="badge">🔧</span> <a href="https://github.com/costycnc/grbl-costycnc">Firmware su GitHub</a></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">⎯ domande che forse hai</div>
+
+    <div class="card">
+      <strong>❓ "Perché vedo roba didattica (AVR1) se ho comprato la macchina?"</strong>
+      <p>Perché sono la stessa persona. Faccio entrambe le cose. La parte didattica è per chi vuole imparare l'assembly da zero. <strong>Alla tua macchina non serve.</strong> Segui solo la sezione "produzione".</p>
+    </div>
+
+    <div class="card">
+      <strong>❓ "Devo usare UGS o salvare i file?"</strong>
+      <p><strong>No.</strong> costycnc.it/cm8 è anche un GCode sender. Colleghi l'USB, carichi immagine o incolli GCode, premi "Invia". Fatto. UGS non serve.</p>
+    </div>
+
+    <div class="card">
+      <strong>❓ "Il plugin Inkscape è obbligatorio?"</strong>
+      <p>No. Puoi disegnare ovunque, esportare come PNG o SVG, e caricare direttamente su costycnc.it/cm8. Il plugin serve se vuoi generare GCode senza uscire da Inkscape.</p>
+    </div>
+
+    <div class="card">
+      <strong>❓ "Tutti questi repository GitHub sono necessari?"</strong>
+      <p>No. La maggior parte sono didattici o sperimentali. Quelli che servono per la macchina sono solo il plugin Inkscape (versione CNC) e il firmware MKS-DLC32. Il resto è lì per chi ha curiosità o vuole imparare.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="margin:1.5rem 0">
+    <p><strong>🔁 Riepilogo — se hai la mia CNC, ti servono solo:</strong></p>
+    <ul style="margin:0.75rem 0 1rem 1.75rem">
+      <li>1. <a href="https://github.com/costycnc">Plugin Inkscape costycnc</a> (per disegnare)</li>
+      <li>2. <a href="https://costycnc.it/cm8">costycnc.it/cm8</a> (per generare GCode e inviare via USB)</li>
+      <li>3. Firmware MKS-DLC32 (già installato sulla scheda)</li>
+    </ul>
+    <p><strong>📖 Se vuoi imparare l'assembly AVR da zero:</strong> vai su <a href="https://costycnc.it/avr1">costycnc.it/avr1</a></p>
+    <p><strong>🛒 Se vuoi vedere la CNC:</strong> <a href="https://www.amazon.it/dp/B0CNRR6MJ1">Amazon Italia</a> · <a href="https://www.amazon.fr/dp/B0CNRR6MJ1">Amazon Francia</a> (produttore: Boboaca Costel)</p>
+  </div>
+
+  <div class="footer">
+    costycnc · Boboaca Costel · <a href="https://github.com/costycnc">GitHub</a> · <a href="https://www.iubenda.com/privacy-policy/16322714">Privacy</a>
+  </div>
+</div>
+</body>
+</html>
