@@ -1,316 +1,194 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Boboaca Costel · costycnc · AVR1 · CNC Hot Wire</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>costycnc · Boboaca Costel · AVR Assembly · CNC Hot Wire</title>
+<meta name="description" content="costycnc: two worlds, no confusion. Didactic: AVR assembly for beginners. Production: hot wire CNC, 3 tools only. Garage Edition.">
+<meta name="author" content="Boboaca Costel">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://costycnc.github.io/index.html">
+<link rel="alternate" hreflang="en" href="https://costycnc.github.io/index.html">
+<link rel="alternate" hreflang="it" href="https://costycnc.github.io/index.it.html">
+<link rel="alternate" hreflang="x-default" href="https://costycnc.github.io/index.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="costycnc — two worlds, no confusion">
+<meta property="og:description" content="Didactic: AVR assembly. Production: CNC hot wire. 3 tools only.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://costycnc.github.io/index.html">
+<meta property="profile:username" content="costycnc">
+
+<!-- JSON-LD: chiaro per Google, Bing, AI -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://costycnc.github.io/#person",
+  "name": "Boboaca Costel",
+  "alternateName": "costycnc",
+  "description": "I do two different things. Didactic: I teach AVR assembly from zero. Production: I sell a hot wire CNC machine. For the CNC you need only 3 tools. The rest (didactic) you can ignore.",
+  "url": "https://costycnc.github.io/",
+  "email": "costycnc@costycnc.it",
+  "sameAs": [
+    "https://github.com/costycnc",
+    "https://costycnc.it/",
+    "https://costycnc.it/avr1",
+    "https://costycnc.it/cm8",
+    "https://www.amazon.it/dp/B0CNRR6MJ1",
+    "https://www.amazon.fr/dp/B0CNRR6MJ1"
+  ],
+  "knowsAbout": ["AVR Assembly", "ATmega328", "CNC Hot Wire", "GCode", "Inkscape plugin"],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "CostyCNC Hot Wire",
+        "description": "Hot wire foam cutter. Work area 150x40cm. Garage Edition. For this machine you need only 3 tools.",
+        "url": "https://www.amazon.it/dp/B0CNRR6MJ1"
+      }
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "CreativeWork",
+        "name": "AVR1",
+        "description": "AVR assembly lab for absolute beginners. No installation. LED on in 10 seconds.",
+        "url": "https://costycnc.it/avr1"
+      }
+    }
+  ]
+}
+</script>
+
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    background: #fafaf7;
-    color: #1a1a1a;
-    font-family: 'Courier New', 'Consolas', monospace;
-    line-height: 1.5;
-    padding: 2rem 1rem;
-  }
-
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  /* header senza fronzoli */
-  .header {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .nome {
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.5rem;
-  }
-
-  .contatti {
-    font-size: 0.9rem;
-    color: #333;
-    margin-top: 0.75rem;
-  }
-
-  .contatti a {
-    color: #1a1a1a;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-
-  .contatti a:hover {
-    text-decoration: none;
-  }
-
-  /* menu lineare */
-  .menu {
-    margin: 1.5rem 0 2rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 0.75rem;
-  }
-
-  .menu a {
-    color: #1a1a1a;
-    text-decoration: underline;
-    font-weight: normal;
-  }
-
-  .menu a:hover {
-    text-decoration: none;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 2rem 0 0.75rem 0;
-    letter-spacing: -0.2px;
-    border-left: 3px solid #888;
-    padding-left: 0.75rem;
-  }
-
-  h4 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 1.25rem 0 0.5rem 0;
-  }
-
-  ul {
-    margin-left: 1.5rem;
-    list-style: none;
-  }
-
-  li {
-    margin-bottom: 0.5rem;
-    position: relative;
-    padding-left: 1rem;
-  }
-
-  li::before {
-    content: "·";
-    position: absolute;
-    left: 0;
-    color: #555;
-  }
-
-  a {
-    color: #1a1a1a;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  hr {
-    border: none;
-    border-top: 1px solid #ddd;
-    margin: 2rem 0;
-  }
-
-  .specs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 0.75rem;
-    margin: 1rem 0 1rem 1.5rem;
-  }
-
-  .spec-item {
-    font-size: 0.85rem;
-  }
-
-  .quote {
-    margin-top: 2.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #ccc;
-    color: #333;
-    font-size: 0.85rem;
-  }
-
-  .badge {
-    display: inline-block;
-    background: #eaeae5;
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
-    border-radius: 0;
-    font-family: monospace;
-    margin-left: 0.5rem;
-  }
-
-  @media (max-width: 650px) {
-    body {
-      padding: 1rem;
-    }
-    .menu {
-      gap: 1rem;
-    }
-    .specs-grid {
-      grid-template-columns: 1fr;
-      margin-left: 0;
-    }
-  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#fafaf7;color:#1a1a1a;font-family:'Courier New',monospace;line-height:1.5;padding:2rem 1rem}
+  .container{max-width:1000px;margin:0 auto}
+  .lang{text-align:right;margin-bottom:1rem;font-size:0.85rem}
+  .lang a{color:#1a1a1a;text-decoration:underline}
+  .header{border-bottom:2px solid #1a1a1a;padding-bottom:1.5rem;margin-bottom:2rem}
+  .name{font-size:2rem;font-weight:700;letter-spacing:-1px}
+  .sub{font-size:0.9rem;color:#333;margin-top:0.5rem}
+  .section{margin:2.5rem 0}
+  .section-title{font-size:1.3rem;font-weight:700;margin-bottom:1rem;border-left:4px solid #1a1a1a;padding-left:0.75rem}
+  .card{background:#fff;border:1px solid #ccc;padding:1.25rem;margin:1rem 0}
+  .card p{margin-bottom:0.75rem}
+  .card a{color:#1a1a1a}
+  .badge{background:#eaeae5;font-size:0.7rem;padding:0.2rem 0.5rem;margin-right:0.5rem;display:inline-block}
+  hr{margin:2rem 0}
+  .footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #ccc;font-size:0.8rem}
+  .faq{margin:0.5rem 0 1rem 1rem}
+  .faq p{margin-bottom:0.5rem}
+  @media(max-width:650px){body{padding:1rem}}
 </style>
 </head>
-
 <body>
 <div class="container">
+  <div class="lang">🇬🇧 EN | <a href="index.it.html">🇮🇹 IT</a></div>
 
   <div class="header">
-    <div class="nome">Boboaca Costel</div>
-    <div class="contatti">
-      costycnc.it · AVR1 · CNC Hot Wire<br>
-      📧 <a href="mailto:costycnc@costycnc.it">costycnc@costycnc.it</a><br>
-      📍 Via Cirillo 13, Bovalino (RC), Italia<br>
-      <span style="font-size:0.8rem;">🔧 "Qui non vendiamo sogni. Insegniamo la roccia."</span>
+    <div class="name">costycnc</div>
+    <div class="sub">what I do · and what you need (if you have my machine)</div>
+  </div>
+
+  <!-- TWO WORLDS -->
+  <div class="section">
+    <div class="section-title">⎯ two worlds, no confusion</div>
+    <p>I do two different things. Most of what you see around (GitHub, blog, extensions) is <strong>didactic</strong>: for people who want to learn AVR assembly from zero.</p>
+    <p style="margin-top:0.5rem">Then there is the <strong>hot wire CNC machine</strong> I sell on Amazon. To make it work you need only <strong>3 tools</strong>. The rest (didactic) you can ignore.</p>
+  </div>
+
+  <!-- DIDACTIC -->
+  <div class="section">
+    <div class="section-title">📖 1 · didactic <span style="font-weight:normal">for those who want to learn AVR assembly</span></div>
+    
+    <div class="card">
+      <strong>⚡ AVR1 — lab for absolute beginners</strong>
+      <p>No installation. Just USB. I teach how a microcontroller (ATmega328) works through the "drawers and switches" metaphor. LED on in 10 seconds.</p>
+      <p><span class="badge">👉</span> <a href="https://costycnc.it/avr1">costycnc.it/avr1</a></p>
+    </div>
+
+    <div class="card">
+      <strong>🔧 Inkscape plugin (didactic version)</strong>
+      <p>Examples and tutorials on how to write Python extensions for Inkscape. <strong>Not needed for the CNC machine</strong> (for that I use a specific version).</p>
+      <p><span class="badge">📦</span> <a href="https://github.com/costycnc">GitHub · costycnc</a></p>
+    </div>
+
+    <div class="card">
+      <strong>📝 Blog · code fragments</strong>
+      <p>Scattered notes on AVR, gcode, extensions. Didactic stuff, not updated, but there for those who want to dig.</p>
+      <p><span class="badge">📖</span> <a href="https://costycnc1.blogspot.com">costycnc1.blogspot.com</a></p>
     </div>
   </div>
 
-  <div class="menu">
-    <a href="https://costycnc.it">costycnc.it</a>
-    <a href="https://costycnc.it/avr1">AVR1 — Assembly AVR</a>
-    <a href="https://github.com/costycnc">GitHub</a>
-    <a href="https://www.amazon.fr/dp/B0CNRR6MJ1">CNC su Amazon</a>
+  <!-- PRODUCTION -->
+  <div class="section">
+    <div class="section-title">🛠️ 2 · production <span style="font-weight:normal">for those who have my hot wire CNC (or want to understand it)</span></div>
+    
+    <p><strong>If you bought my machine on Amazon, these are the only 3 tools you need.</strong> The rest (didactic) ignore it.</p>
+
+    <div class="card">
+      <strong>📐 Inkscape plugin · costycnc (CNC version)</strong>
+      <p>Converts vector image to GCode for hot wire cutting. Install in Inkscape extensions folder.</p>
+      <p><span class="badge">⬇️</span> <a href="https://github.com/costycnc">Download from GitHub</a></p>
+    </div>
+
+    <div class="card">
+      <strong>💻 costycnc.it/cm8 · GCode generator + USB sender</strong>
+      <p>Does two things together: converts image to GCode <strong>AND</strong> sends it directly to the machine via USB. <strong>No UGS. No file saving.</strong> Connect USB, load image or paste GCode, press "Send".</p>
+      <p><span class="badge">🚀</span> <a href="https://costycnc.it/cm8">costycnc.it/cm8</a></p>
+    </div>
+
+    <div class="card">
+      <strong>⚙️ Firmware for MKS-DLC32 (ESP32)</strong>
+      <p>Derived from cm8. The board I use in my machines. If you have my CNC, it's already preinstalled. If you want to modify or understand it, it's on GitHub.</p>
+      <p><span class="badge">🔧</span> <a href="https://github.com/costycnc/grbl-costycnc">Firmware on GitHub</a></p>
+    </div>
   </div>
 
-  <!-- ============================================ -->
-  <!-- AVR1 - IL LABORATORIO ASSEMBLY                -->
-  <!-- ============================================ -->
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-title">⎯ questions you might have</div>
 
-  <h3>⚡ AVR1 — laboratorio di AVR Assembly per chi parte da zero</h3>
-  <p>
-  <strong>Nessuna installazione. Solo un cavo USB. LED acceso in 10 secondi.</strong><br>
-  AVR1 è un ambiente interattivo che trasforma il ATmega328 in un armadio di cassetti con interruttori.
-  Ogni registro è un cassetto. Ogni bit è un interruttore. Tu sei l'elettricista.
-  </p>
+    <div class="card">
+      <strong>❓ "Why do I see didactic stuff (AVR1) if I bought the machine?"</strong>
+      <p>Because I'm the same person. I do both things. The didactic part is for those who want to learn assembly from scratch. <strong>It is not needed for your machine.</strong> Follow only the "production" section.</p>
+    </div>
 
-  <ul>
-    <li><strong>Simulatore visivo</strong> — clicchi l'interruttore, vedi il LED accendersi</li>
-    <li><strong>Compilatore embed</strong> → opcode in tempo reale</li>
-    <li><strong>Niente IDE</strong> — solo editor di testo e browser</li>
-    <li><strong>Metafora dei cassetti</strong> (DDRB = cassetto 4, PORTB = cassetto 5)</li>
-    <li><strong>Web Serial</strong> — Flash via browser. Nessun avrdude da configurare.</li>
-  </ul>
+    <div class="card">
+      <strong>❓ "Do I need to use UGS or save files?"</strong>
+      <p><strong>No.</strong> costycnc.it/cm8 is also a GCode sender. Connect USB, load image or paste GCode, press "Send". Done. UGS is not needed.</p>
+    </div>
 
-  <p>
-  📖 <a href="https://costycnc.it/avr1">Entra in AVR1</a> — non serve sapere nulla. Si impara facendo.
-  </p>
+    <div class="card">
+      <strong>❓ "Is the Inkscape plugin mandatory?"</strong>
+      <p>No. You can draw anywhere, export as PNG or SVG, and upload directly to costycnc.it/cm8. The plugin is only if you want to generate GCode without leaving Inkscape.</p>
+    </div>
 
-  <!-- ============================================ -->
-  <!-- CNC HOT WIRE - MACCHINA TAGLIA POLISTIROLO    -->
-  <!-- ============================================ -->
-
-  <h3>🛠️ CostyCNC Hot Wire — tagliapolistirolo a filo caldo</h3>
-  <p>
-  Progettata e costruita da me. Venduta su <strong>Amazon</strong> con il mio nome come produttore. <br>
-  Non è un kit cinese rimarchiato. È <strong>Garage Edition</strong> con supporto diretto di chi l'ha progettata.
-  </p>
-
-  <h4>📐 Specifiche tecniche</h4>
-  <div class="specs-grid">
-    <div class="spec-item">📏 Area taglio: <strong>150cm (L) x 40cm (H)</strong></div>
-    <div class="spec-item">🔁 Spessore: <strong>15cm</strong> in un passaggio</div>
-    <div class="spec-item">⚡ Filo: nichel-cromo <strong>0.2mm</strong></div>
-    <div class="spec-item">🎛️ Elettronica: <strong>MakerBase MKS DLC32</strong> (ESP32)</div>
-    <div class="spec-item">📡 Connessioni: <strong>WiFi, USB, SD, Bluetooth*</strong></div>
-    <div class="spec-item">🖥️ Software: MKS DLC32 / FluidNC (customizzabile)</div>
-    <div class="spec-item">🔩 Telaio: alluminio + acciaio</div>
-    <div class="spec-item">⚡ Alimentazione: 12V 3A</div>
+    <div class="card">
+      <strong>❓ "Are all those GitHub repositories necessary?"</strong>
+      <p>No. Most are didactic or experimental. The only ones needed for the machine are the Inkscape plugin (CNC version) and the MKS-DLC32 firmware. The rest is there for those who are curious or want to learn.</p>
+    </div>
   </div>
 
-  <h4>📦 Cosa c'è nella scatola (trasparenza totale)</h4>
-  <ul>
-    <li>Elettronica professionale: scheda MakerBase MKS DLC32 con WiFi, USB, SD</li>
-    <li>Bluetooth configurabile da utenti esperti</li>
-    <li>Software open-source — massima personalizzazione</li>
-    <li>Area taglio generosa (150x40cm)</li>
-    <li><strong>Assistenza diretta con me, il costruttore</strong> — supporto gratuito</li>
-  </ul>
-
-  <h4>🎯 A chi è destinata?</h4>
-  <ul>
-    <li>Hobbisti avanzati che vogliono una soluzione senza fronzoli</li>
-    <li>Piccoli professionisti (scenografi, modellisti) con budget limitato</li>
-    <li>Maker che apprezzano l'elettronica e vogliono possibilità di upgrade</li>
-  </ul>
-
-  <h4>⚠️ Cosa devi sapere (lo scrivo chiaramente)</h4>
-  <ul>
-    <li><strong>Garage Edition</strong>: struttura progettata per risparmiare sui costi senza compromettere il taglio</li>
-    <li>Taglio preciso (testato su dozzine di progetti), ma struttura meno massiccia delle macchine professionali</li>
-    <li><strong>Perché scegliere me?</strong> Prezzo onesto (paghi l'essenziale, non il marketing). Nessuna sorpresa. Supporto reale.</li>
-  </ul>
-
-  <h4>🔌 Software e integrazione</h4>
-  <ul>
-    <li><strong>Plugin costycnc per Inkscape</strong> — converti immagini in GCode direttamente</li>
-    <li>Citato nel curriculum <strong>Fab Academy 2024</strong> come best practice per taglio a filo caldo[citation:2]</li>
-    <li>Compatibile con Universal Gcode Sender</li>
-  </ul>
-
-  <p>
-  🛒 <a href="https://www.amazon.fr/Generico-costycnc-taille-polystyr%C3%A8ne-cnc/dp/B0CNRR6MJ1">Pagina Amazon</a> · 
-  📧 <a href="mailto:costycnc@costycnc.it">Contatto diretto</a>
-  </p>
-
-  <!-- ============================================ -->
-  <!-- CHI SONO E FILOSOFIA                          -->
-  <!-- ============================================ -->
-
-  <h3>⎯ chi sono</h3>
-  <p>
-  Mi chiamo <strong>Boboaca Costel</strong>.<br>
-  Progetto hardware e scrivo software senza intermediari. Credo nella documentazione chiara,
-  nei bit a vista e in niente che faccia da schermo tra me e la macchina.
-  </p>
-
-  <h3>⎯ filosofia (senza compromessi)</h3>
-  <ul>
-    <li>🔩 <strong>Niente IDE pesanti</strong> — solo editor di testo</li>
-    <li>📵 <strong>Hardware minimale</strong> — ATmega328 è il calcare</li>
-    <li>👗 <strong>Codice nudo</strong> — registri a vista. Quello che scrivi è quello che il chip esegue.</li>
-    <li>⏳ <strong>Eterno</strong> — SBI e CBI erano qui prima di te. E ci saranno quando i framework saranno polvere.</li>
-    <li>🌐 <strong>Comunità di scavatori</strong> — chi sa insegna. Chi impara scava più a fondo.</li>
-  </ul>
-
-  <h3>⎯ link veri (niente fronzoli)</h3>
-  <ul>
-    <li>🌍 Sito principale: <a href="https://costycnc.it">costycnc.it</a></li>
-    <li>⚡ AVR1 — assembly per chi parte da zero: <a href="https://costycnc.it/avr1">costycnc.it/avr1</a></li>
-    <li>🛒 CNC Hot Wire su Amazon: <a href="https://www.amazon.fr/dp/B0CNRR6MJ1">B0CNRR6MJ1</a> — produttore: Boboaca Costel[citation:1]</li>
-    <li>🔧 Plugin Inkscape costycnc: usato in <a href="http://fabacademy.org/2024/labs/ostriv/students/tetiana-solomakha/Assignment/week16/week16.html">Fab Academy 2024</a>[citation:2]</li>
-    <li>📦 Privacy policy (trasparenza): <a href="https://www.iubenda.com/privacy-policy/16322714">iubenda.com/privacy-policy/16322714</a>[citation:3]</li>
-    <li>🐙 GitHub: <a href="https://github.com/costycnc">github.com/costycnc</a></li>
-  </ul>
-
-  <div class="quote">
-    <strong>«Qui non vendiamo sogni. Insegniamo la roccia. Il Nano è il nostro piccone. I registri sono la vena. ATmega328 è il calcare su cui poggia tutto.»</strong><br>
-    — Boboaca Costel, costycnc.it/avr1
-    <br><br>
-    <strong>«Garage Edition. Struttura progettata per risparmiare sui costi senza compromettere le prestazioni di taglio. Supporto reale: se hai problemi, parli direttamente con chi l'ha progettata.»</strong><br>
-    — Boboaca Costel, CostyCNC Hot Wire[citation:1]
-  </div>
-
+  <!-- SUMMARY -->
   <hr>
-
-  <div style="font-size:0.75rem; color:#555; margin-top:1rem;">
-    · Bit, non parole. · Registri, non astrazioni. · Trasparenza, non marketing. ·
+  <div style="margin:1.5rem 0">
+    <p><strong>🔁 Summary — if you have my CNC, you only need:</strong></p>
+    <ul style="margin:0.75rem 0 1rem 1.75rem">
+      <li>1. <a href="https://github.com/costycnc">Inkscape plugin costycnc</a> (to draw)</li>
+      <li>2. <a href="https://costycnc.it/cm8">costycnc.it/cm8</a> (to generate GCode and send via USB)</li>
+      <li>3. MKS-DLC32 firmware (already installed on the board)</li>
+    </ul>
+    <p><strong>📖 If you want to learn AVR assembly from zero:</strong> go to <a href="https://costycnc.it/avr1">costycnc.it/avr1</a></p>
+    <p><strong>🛒 If you want to see the CNC:</strong> <a href="https://www.amazon.it/dp/B0CNRR6MJ1">Amazon Italy</a> · <a href="https://www.amazon.fr/dp/B0CNRR6MJ1">Amazon France</a> (manufacturer: Boboaca Costel)</p>
   </div>
 
+  <div class="footer">
+    costycnc · Boboaca Costel · <a href="https://github.com/costycnc">GitHub</a> · <a href="https://www.iubenda.com/privacy-policy/16322714">Privacy</a>
+  </div>
 </div>
 </body>
 </html>
